@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{Linear Algebra \& Vector Spaces}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{changepage}
+\usepackage{lipsum}
+\usepackage{color, colortbl} % For Coloring Table Elements
+\usepackage{wrapfig}
+%\usepackage{alltt}
+\usepackage{listings}
+\usepackage{makecell} % allows more complex table formatting
+\usepackage{proof} %for inference trees
+
+% for the makecell package:
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+\addtolength{\hoffset}{-1cm}
+\addtolength{\textwidth}{1cm}
+\graphicspath{ {IMAGES/} }
+
+\definecolor{Gray}{gray}{0.9}
+\newcolumntype{g}{>{\columncolor{Gray}}c}
+
+\title{Linear Algebra \& Vector Spaces:\\Notes Related to Quantum Computer Science}
+\author{Warren (Hoss) Craft}
+\date{Summer 2019}
+
+\begin{document}
+\maketitle
+%\tableofcontents
+%\newpage
+
+\flushleft
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%
+%   Problem 5   %
+%%%%%%%%%%%%%%%%%
+
+\item Show that if $a$ and $b$ are positive integers, then $ab = \gcd(a,b)\cdot \text{lcm}(a,b)$. \textit{HINT : Use the prime factorizations of $a$ and $b$ and the formulae for $\gcd(a, b)$ and $\text{lcm} (a, b)$ in terms of these factorizations}.\par
+
+\vspace{0.1 in}
+
+\textbf{SOLUTION.} We borrow the notation suggested by Rosen (7e, beginning on pg 266), writing the prime factorizations of $a$ and $b$ in the following way:\par
+
+\begin{adjustwidth}{0.5 in}{0.5 in}
+$a = p_1^{a_1}\; p_2^{a_2}\; p_3^{a_3}\cdots p_n^{a_n}$\par
+$b = p_1^{b_1}\; p_2^{b_2}\; p_3^{b_3}\cdots p_n^{b_n}$\par
+\end{adjustwidth}
+
+where each exponent $a_i$ or $b_j$ is a non-negative integer and the $p_i$s are all the prime factors appearing in the prime factorization of $a$ \textit{or} $b$, with zero exponents as needed for the expression for $a$ or $b$. Then the \textit{gcd} and \textit{lcm} can be expressed as follows:\par
+\begin{adjustwidth}{0.5 in}{0.5 in}
+$\gcd(a, b) = (p_1^{\min\{a_1, b_1\}})\;
+              (p_2^{\min\{a_2, b_2\}})\;
+              (p_3^{\min\{a_3, b_3\}}) \cdots
+              (p_n^{\min\{a_n, b_n\}})$\par
+lcm$(a,b)   = (p_1^{\max\{a_1, b_1\}})\;
+              (p_2^{\max\{a_2, b_2\}})\;
+              (p_3^{\max\{a_3, b_3\}}) \cdots
+              (p_n^{\max\{a_n, b_n\}})$\par
+\end{adjustwidth}
+Multiplying the two expressions and rearranging to pair up the matching prime factors, the, we have:\par
+\begin{adjustwidth}{0.5 in}{0.5 in}
+$\gcd(a, b)\cdot\text{lcm}(a,b)$\par
+  $= (p_1^{\min\{a_1, b_1\}})\;
+     (p_1^{\max\{a_1, b_1\}})\;\cdot
+     (p_2^{\min\{a_2, b_2\}})\;
+     (p_2^{\max\{a_2, b_2\}})\;\cdots
+     (p_n^{\min\{a_n, b_n\}})\;
+     (p_n^{\max\{a_n, b_n\}})$\par
+     
+   $= (p_1^{a_1})\;(p_1^{b_1})\;\cdot
+     (p_2^{a_2})\;(p_2^{b_2})\;\cdots
+     (p_n^{a_n})\;(p_n^{b_n})\;$\par
+   
+   $= (p_1^{a_1})\;(p_2^{a_2})\;\cdots (p_n^{a_n})\;\cdot
+      (p_1^{b_1})\;(p_2^{b_2})\;\cdots (p_n^{b_n})\;$
+   
+   $= a\cdot b$
+
+
+\end{adjustwidth}
+
+\newpage
+
+%%%%%%%%%%%%%%%%
+%   Problem 6  %
+%%%%%%%%%%%%%%%%
+
+\item For any $n \in Z^{+}$, prove that the integers $8n + 3$ and $5n + 2$ are relatively prime.\par
+
+\vspace{0.1 in}
+\textbf{SOLUTION.}\par
+
+For convenience, let $f(n) = 8n + 3$ and $g(n) = 5n + 2$, each with domain $n \in Z^{+}$.\par
+Then, let $P(n)$ denote the proposition that $f(n)$ and $g(n)$ are relatively prime (or equivalently, that $\gcd(f(n), g(n)) = 1$).\par
+
+Consider then applying the Euclidean algorithm directly to determine the $\gcd(f(n), g(n))$, which is possible when $n \in Z^{+}$, because then both $f(n)$ and $g(n)$ are each positive integers as well:
+\begin{align*}
+a      &= qb + r\\
+8n + 3 &= (1)\cdot (5n + 2) + (3n + 1)\\
+5n + 2 &= (1)\cdot (3n + 1) + (2n + 1)\\
+3n + 1 &= (1)\cdot (2n + 1) + (n)\\
+2n + 1 &= (2)\cdot (n)      + 1\\
+n      &= (n)\cdot (1)      + 0
+\end{align*}
+
+Thus, $\gcd(f(n), g(n)) = 1$ (\textit{i.e.}, the last non-zero remainder in the process), and thus $f(n)$ and $g(n)$ are relatively prime for  $n\in Z^{+}$. In fact, we see that $f(0) = 3$ and $g(0) = 2$, which are also relatively prime, and so $f(n)$ and $g(n)$ are relatively prime for any non-negative integer $n$.
+
+\vspace{0.1 in}
+
+
+
+\end{enumerate}
+
+\end{document}
