@@ -22,6 +22,10 @@
 \usepackage{makecell} % allows more complex table formatting
 \usepackage{proof} %for inference trees
 \usepackage{scrextend} % for block indents (for example)
+\usepackage{cite}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{url}
 
 % for the makecell package:
 \renewcommand\theadalign{bc}
@@ -51,7 +55,7 @@
 %   Intro Parag   %
 %%%%%%%%%%%%%%%%%%%
 
-Mermin (2007) writes that,
+Mermin \cite{Mermin_2007} writes that,
 \vspace{0.125in}
 \begin{addmargin}[0.25in]{0.25in}
 A linear transformation that preserves the magnitudes of all vectors is called unitary, because it follows from linearity that all magnitudes will be preserved if and only if unit vectors (vectors of magnitude 1) are taken into unit vectors. It also follows from linearity that if a linear transformation \textbf{U} is unitary then it must preserve not only the inner products of arbitrary vectors with themselves, but also the inner products of arbitrary pairs of vectors. This follows straightforwardly for two general vectors $|\phi\rangle$ and $|\psi\rangle$ from the fact that \textbf{U} preserves the magnitudes of both of them, as well as the magnitudes of the vectors $|\phi\rangle + |\psi\rangle$ and $|\phi\rangle + i|\psi\rangle$. [pg 161 (Appendix A)]
@@ -59,8 +63,7 @@ A linear transformation that preserves the magnitudes of all vectors is called u
 
 \vspace{0.125in}
 
-As a concrete example, consider the unitary linear transformation represented by the $2 \times 2$ (complex) matrix:
-
+As a concrete example, consider the unitary linear transformation represented by the following $2 \times 2$ (complex) matrix \cite{wikipedia:UnitaryMatrix}:
 \[
 U = \begin{pmatrix}
 a & b\\ -e^{i\theta}b^{*} & e^{i\theta}a^{*}
@@ -193,7 +196,8 @@ Thus, $\gcd(f(n), g(n)) = 1$ (\textit{i.e.}, the last non-zero remainder in the 
 
 \end{enumerate}
 
-\bibliographystyle{ACM-Reference-Format}
-\bibliography{biblio.bib}
+% \bibliographystyle{ACM-Reference-Format}
+\bibliographystyle{plain}
+\bibliography{bibliography.bib}
 
 \end{document}
