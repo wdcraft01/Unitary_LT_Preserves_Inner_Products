@@ -4,7 +4,7 @@
 \pagestyle{fancy}
 \lhead{}
 \chead{}
-\rhead{Linear Algebra \& Vector Spaces}
+\rhead{Unitary Linear Transformations}
 \lfoot{}
 \cfoot{\thepage}
 \rfoot{}
@@ -21,6 +21,7 @@
 \usepackage{listings}
 \usepackage{makecell} % allows more complex table formatting
 \usepackage{proof} %for inference trees
+\usepackage{scrextend} % for block indents (for example)
 
 % for the makecell package:
 \renewcommand\theadalign{bc}
@@ -35,7 +36,7 @@
 \definecolor{Gray}{gray}{0.9}
 \newcolumntype{g}{>{\columncolor{Gray}}c}
 
-\title{Linear Algebra \& Vector Spaces:\\Notes Related to Quantum Computer Science}
+\title{A Unitary Linear Transformation Preserves the Inner Product of any Two Aribitrary Vectors}
 \author{Warren (Hoss) Craft}
 \date{Summer 2019}
 
@@ -46,11 +47,75 @@
 
 \flushleft
 
+%%%%%%%%%%%%%%%%%%%
+%   Intro Parag   %
+%%%%%%%%%%%%%%%%%%%
+
+Mermin (2007) writes that,
+\vspace{0.125in}
+\begin{addmargin}[0.25in]{0.25in}
+A linear transformation that preserves the magnitudes of all vectors is called unitary, because it follows from linearity that all magnitudes will be preserved if and only if unit vectors (vectors of magnitude 1) are taken into unit vectors. It also follows from linearity that if a linear transformation \textbf{U} is unitary then it must preserve not only the inner products of arbitrary vectors with themselves, but also the inner products of arbitrary pairs of vectors. This follows straightforwardly for two general vectors $|\phi\rangle$ and $|\psi\rangle$ from the fact that \textbf{U} preserves the magnitudes of both of them, as well as the magnitudes of the vectors $|\phi\rangle + |\psi\rangle$ and $|\phi\rangle + i|\psi\rangle$. [pg 161 (Appendix A)]
+\end{addmargin}
+
+\vspace{0.125in}
+
+As a concrete example, consider the unitary linear transformation represented by the $2 \times 2$ (complex) matrix:
+
+\[
+U = \begin{pmatrix}
+a & b\\ -e^{i\theta}b^{*} & e^{i\theta}a^{*}
+\end{pmatrix}
+\]
+
+where $a$ and $b$ are complex numbers such that $|a|^2 + |b|^2 = 1$, and $^*$ indicates complex conjugation.
+
+\vspace{0.125in}
+
+Notice that:
+\begin{align*}
+\det(U)      &= e^{i\theta}a a^{*} + e^{i\theta}b b^{*}\\
+&= e^{i\theta}|a|^2 + e^{i\theta}|b|^2\\
+&= e^{i\theta}(|a|^2 + |b|^2)\\
+&= e^{i\theta}\\
+\end{align*}
+and letting $U^*$ denote the conjugate transpose of $U$, we have:
+\begin{align*}
+U U^* &=
+\begin{pmatrix}
+a & b\\
+-e^{i\theta}b^{*} & e^{i\theta}a^{*}
+\end{pmatrix}
+\begin{pmatrix}
+a^* & -e^{-i\theta}b\\
+b^* & e^{-i\theta}a
+\end{pmatrix}\\
+&= \begin{pmatrix}
+   aa^* + bb^* &
+   -e^{-i\theta}ab + e^{-i\theta}ab\\
+   -e^{i\theta}a^{*}b^{*} + e^{i\theta}a^{*}b^{*} &
+   bb^* + aa^*
+   \end{pmatrix}\\
+&= \begin{pmatrix}
+   |a|^2 + |b|^2 & 0\\
+   0             & |b|^2 + |a|^2
+   \end{pmatrix}\\
+&= \begin{pmatrix}
+   1 & 0\\
+   0 & 1
+   \end{pmatrix}\\
+&= I
+\end{align*}
+
+Similarly we can show that $U^{*}U = I$, and thus $U^{*}U = UU^{*} = I$, verifying that $U$ is unitary.
+
+
+
+
 \begin{enumerate}
 
-%%%%%%%%%%%%%%%%%
-%   Problem 5   %
-%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%   Intro Parag   %
+%%%%%%%%%%%%%%%%%%%
 
 \item Show that if $a$ and $b$ are positive integers, then $ab = \gcd(a,b)\cdot \text{lcm}(a,b)$. \textit{HINT : Use the prime factorizations of $a$ and $b$ and the formulae for $\gcd(a, b)$ and $\text{lcm} (a, b)$ in terms of these factorizations}.\par
 
@@ -127,5 +192,8 @@ Thus, $\gcd(f(n), g(n)) = 1$ (\textit{i.e.}, the last non-zero remainder in the 
 
 
 \end{enumerate}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{biblio.bib}
 
 \end{document}
