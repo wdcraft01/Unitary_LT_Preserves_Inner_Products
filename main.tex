@@ -40,7 +40,7 @@
 \definecolor{Gray}{gray}{0.9}
 \newcolumntype{g}{>{\columncolor{Gray}}c}
 
-\title{A Unitary Linear Transformation Preserves the Inner Product of any Two Aribitrary Vectors}
+\title{A Unitary Linear Transformation Preserves the Inner Product of any Two Arbitrary Vectors}
 \author{Warren (Hoss) Craft}
 \date{Summer 2019}
 
@@ -61,42 +61,45 @@ Mermin \cite{Mermin_2007} writes that,
 A linear transformation that preserves the magnitudes of all vectors is called unitary, because it follows from linearity that all magnitudes will be preserved if and only if unit vectors (vectors of magnitude 1) are taken into unit vectors. It also follows from linearity that if a linear transformation \textbf{U} is unitary then it must preserve not only the inner products of arbitrary vectors with themselves, but also the inner products of arbitrary pairs of vectors. This follows straightforwardly for two general vectors $|\phi\rangle$ and $|\psi\rangle$ from the fact that \textbf{U} preserves the magnitudes of both of them, as well as the magnitudes of the vectors $|\phi\rangle + |\psi\rangle$ and $|\phi\rangle + i|\psi\rangle$. [pg 161 (Appendix A)]
 \end{addmargin}
 
-\vspace{0.125in}
+\vspace{0.25in}
 
+\textbf{I. A $2 \times 2$ Unitary Matrix}\par
+
+\vspace{0.125in}
 As a concrete example, consider the unitary linear transformation represented by the following $2 \times 2$ (complex) matrix \cite{wikipedia:UnitaryMatrix}:
 \[
 U = \begin{pmatrix}
-a & b\\ -e^{i\theta}b^{*} & e^{i\theta}a^{*}
+a & b\\ -e^{i\theta}\overline{b} & e^{i\theta}\overline{a}
 \end{pmatrix}
 \]
 
-where $a$ and $b$ are complex numbers such that $|a|^2 + |b|^2 = 1$, and $^*$ indicates complex conjugation.
+where $a$ and $b$ are complex numbers such that $|a|^2 + |b|^2 = 1$, and $\overline{x}$ indicates complex conjugation of a complex number $x$.
 
 \vspace{0.125in}
 
 Notice that:
 \begin{align*}
-\det(U)      &= e^{i\theta}a a^{*} + e^{i\theta}b b^{*}\\
+\det(U)      &= e^{i\theta}a \overline{a} + e^{i\theta}b \overline{b}\\
 &= e^{i\theta}|a|^2 + e^{i\theta}|b|^2\\
 &= e^{i\theta}(|a|^2 + |b|^2)\\
 &= e^{i\theta}\\
 \end{align*}
-and letting $U^*$ denote the conjugate transpose of $U$, we have:
+and letting $\overline{U}^{T}$ denote the conjugate transpose of $U$, we have:
 \begin{align*}
-U U^* &=
+U \overline{U}^{T} &=
 \begin{pmatrix}
 a & b\\
--e^{i\theta}b^{*} & e^{i\theta}a^{*}
+-e^{i\theta}\overline{b} & e^{i\theta}\overline{a}
 \end{pmatrix}
 \begin{pmatrix}
-a^* & -e^{-i\theta}b\\
-b^* & e^{-i\theta}a
+\overline{a} & -e^{-i\theta}b\\
+\overline{b} & e^{-i\theta}a
 \end{pmatrix}\\
 &= \begin{pmatrix}
-   aa^* + bb^* &
+   a\overline{a} + b\overline{b} &
    -e^{-i\theta}ab + e^{-i\theta}ab\\
-   -e^{i\theta}a^{*}b^{*} + e^{i\theta}a^{*}b^{*} &
-   bb^* + aa^*
+   -e^{i\theta}\overline{a}\overline{b} + e^{i\theta}\overline{a}\overline{b} &
+   b\overline{b} + a\overline{a}
    \end{pmatrix}\\
 &= \begin{pmatrix}
    |a|^2 + |b|^2 & 0\\
@@ -109,92 +112,136 @@ b^* & e^{-i\theta}a
 &= I
 \end{align*}
 
-Similarly we can show that $U^{*}U = I$, and thus $U^{*}U = UU^{*} = I$, verifying that $U$ is unitary.
+Similarly we can show that $\overline{U}^{T}U = I$, and thus $\overline{U}^{T}U = U\overline{U}^{T} = I$, verifying that $U$ is unitary.
 
+\vspace{0.25in}
 
+\textbf{II. U Preserving the Magnitude of a Vector}\par
 
+\vspace{0.125in}
 
-\begin{enumerate}
+Our unitary linear transformation represented by the matrix \textbf{U} in the previous section should preserve the magnitude of any 2D vector $x = x_0 |0\rangle + x_1 |1\rangle$ in our 2D vector space with $|0\rangle$ and $|1\rangle$ as orthonormal basis vectors. As a concrete example, note that for the unit vector $x = \frac{\sqrt{2}}{2} |0\rangle + \frac{\sqrt{2}}{2} |1\rangle = (\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})$ we have:
 
-%%%%%%%%%%%%%%%%%%%
-%   Intro Parag   %
-%%%%%%%%%%%%%%%%%%%
-
-\item Show that if $a$ and $b$ are positive integers, then $ab = \gcd(a,b)\cdot \text{lcm}(a,b)$. \textit{HINT : Use the prime factorizations of $a$ and $b$ and the formulae for $\gcd(a, b)$ and $\text{lcm} (a, b)$ in terms of these factorizations}.\par
-
-\vspace{0.1 in}
-
-\textbf{SOLUTION.} We borrow the notation suggested by Rosen (7e, beginning on pg 266), writing the prime factorizations of $a$ and $b$ in the following way:\par
-
-\begin{adjustwidth}{0.5 in}{0.5 in}
-$a = p_1^{a_1}\; p_2^{a_2}\; p_3^{a_3}\cdots p_n^{a_n}$\par
-$b = p_1^{b_1}\; p_2^{b_2}\; p_3^{b_3}\cdots p_n^{b_n}$\par
-\end{adjustwidth}
-
-where each exponent $a_i$ or $b_j$ is a non-negative integer and the $p_i$s are all the prime factors appearing in the prime factorization of $a$ \textit{or} $b$, with zero exponents as needed for the expression for $a$ or $b$. Then the \textit{gcd} and \textit{lcm} can be expressed as follows:\par
-\begin{adjustwidth}{0.5 in}{0.5 in}
-$\gcd(a, b) = (p_1^{\min\{a_1, b_1\}})\;
-              (p_2^{\min\{a_2, b_2\}})\;
-              (p_3^{\min\{a_3, b_3\}}) \cdots
-              (p_n^{\min\{a_n, b_n\}})$\par
-lcm$(a,b)   = (p_1^{\max\{a_1, b_1\}})\;
-              (p_2^{\max\{a_2, b_2\}})\;
-              (p_3^{\max\{a_3, b_3\}}) \cdots
-              (p_n^{\max\{a_n, b_n\}})$\par
-\end{adjustwidth}
-Multiplying the two expressions and rearranging to pair up the matching prime factors, the, we have:\par
-\begin{adjustwidth}{0.5 in}{0.5 in}
-$\gcd(a, b)\cdot\text{lcm}(a,b)$\par
-  $= (p_1^{\min\{a_1, b_1\}})\;
-     (p_1^{\max\{a_1, b_1\}})\;\cdot
-     (p_2^{\min\{a_2, b_2\}})\;
-     (p_2^{\max\{a_2, b_2\}})\;\cdots
-     (p_n^{\min\{a_n, b_n\}})\;
-     (p_n^{\max\{a_n, b_n\}})$\par
-     
-   $= (p_1^{a_1})\;(p_1^{b_1})\;\cdot
-     (p_2^{a_2})\;(p_2^{b_2})\;\cdots
-     (p_n^{a_n})\;(p_n^{b_n})\;$\par
-   
-   $= (p_1^{a_1})\;(p_2^{a_2})\;\cdots (p_n^{a_n})\;\cdot
-      (p_1^{b_1})\;(p_2^{b_2})\;\cdots (p_n^{b_n})\;$
-   
-   $= a\cdot b$
-
-
-\end{adjustwidth}
-
-\newpage
-
-%%%%%%%%%%%%%%%%
-%   Problem 6  %
-%%%%%%%%%%%%%%%%
-
-\item For any $n \in Z^{+}$, prove that the integers $8n + 3$ and $5n + 2$ are relatively prime.\par
-
-\vspace{0.1 in}
-\textbf{SOLUTION.}\par
-
-For convenience, let $f(n) = 8n + 3$ and $g(n) = 5n + 2$, each with domain $n \in Z^{+}$.\par
-Then, let $P(n)$ denote the proposition that $f(n)$ and $g(n)$ are relatively prime (or equivalently, that $\gcd(f(n), g(n)) = 1$).\par
-
-Consider then applying the Euclidean algorithm directly to determine the $\gcd(f(n), g(n))$, which is possible when $n \in Z^{+}$, because then both $f(n)$ and $g(n)$ are each positive integers as well:
 \begin{align*}
-a      &= qb + r\\
-8n + 3 &= (1)\cdot (5n + 2) + (3n + 1)\\
-5n + 2 &= (1)\cdot (3n + 1) + (2n + 1)\\
-3n + 1 &= (1)\cdot (2n + 1) + (n)\\
-2n + 1 &= (2)\cdot (n)      + 1\\
-n      &= (n)\cdot (1)      + 0
+x^{\prime} &= U x\\
+&=
+\begin{pmatrix}
+a & b\\
+-e^{i\theta}\overline{b} & e^{i\theta}\overline{a}
+\end{pmatrix}
+\begin{pmatrix}
+\sqrt{2}/2\\
+\sqrt{2}/2
+\end{pmatrix}\\
+&= \frac{\sqrt{2}}{2}
+\begin{pmatrix}
+a & b\\
+e^{i\theta}\overline{b} & e^{i\theta}\overline{a}
+\end{pmatrix}
+\begin{pmatrix}
+1\\
+1
+\end{pmatrix}\\
+&= \frac{\sqrt{2}}{2}
+\begin{pmatrix}
+   a + b\\
+   e^{i\theta}(\overline{a} - \overline{b})
+   \end{pmatrix}
 \end{align*}
 
-Thus, $\gcd(f(n), g(n)) = 1$ (\textit{i.e.}, the last non-zero remainder in the process), and thus $f(n)$ and $g(n)$ are relatively prime for  $n\in Z^{+}$. In fact, we see that $f(0) = 3$ and $g(0) = 2$, which are also relatively prime, and so $f(n)$ and $g(n)$ are relatively prime for any non-negative integer $n$.
+So, the magnitude of the transformed vector $x^{\prime}$ is:
+\begin{align*}
+|x^{\prime}| &= (\frac{\sqrt{2}}{2})\sqrt{|a+b|^2 + |\overline{a}-\overline{b}|^2}\\
+&= (\frac{\sqrt{2}}{2})\sqrt{|a+b|^2 + |\overline{a - b}|^2}\\
+&= (\frac{\sqrt{2}}{2})\sqrt{
+  (a+b)\overline{(a+b)} + 
+  \overline{(a - b)}(a - b)}\\
+&= (\frac{\sqrt{2}}{2})\sqrt{
+  (a+b)(\overline{a}+\overline{b}) + 
+  (\overline{a} - \overline{b})(a - b)}\\
+&= (\frac{\sqrt{2}}{2})\sqrt{
+  (a\overline{a} + a\overline{b} + \overline{a}b + b\overline{b}) + 
+  (a\overline{a} - a\overline{b} - \overline{a}b + b\overline{b})
+  }\\
+&= (\frac{\sqrt{2}}{2})\sqrt{
+  2 a \overline{a} + 2 b \overline{b}
+  }\\
+&= \sqrt{
+  a \overline{a} + b \overline{b}
+  }\\
+&= \sqrt{
+  |a|^2 + |b|^2
+  }\\
+&= 1
+\end{align*}
 
-\vspace{0.1 in}
+More generally, for a vector $x = x_0 |0\rangle + x_1 |1\rangle$ with magnitude $|x| = \sqrt{|x_0|^2 + |x_1|^2}$ we have:
+
+\begin{align*}
+x^{\prime}
+&= U x\\
+&= \begin{pmatrix}
+   a & b\\
+   -e^{i\theta}\overline{b} & e^{i\theta}\overline{a}
+\end{pmatrix}
+\begin{pmatrix} x_0\\x_1\end{pmatrix}\\
+&= \begin{pmatrix}
+   ax_0 + bx_1\\
+   -e^{i\theta}\overline{b} x_0 +  e^{i\theta}\overline{a} x_1
+\end{pmatrix}\\
+&= \begin{pmatrix}
+   ax_0 + bx_1\\
+   e^{i\theta}(
+   \overline{a} x_1 - \overline{b} x_0)
+\end{pmatrix}\\
+\end{align*}
+
+So the magnitude of the transformed vector $x^{\prime}$ is:
+
+\begin{align*}
+|x^{\prime}| &=
+\sqrt{|ax_0+bx_1|^2 + |e^{i\theta}(\overline{a}x_1-\overline{b}x_0)|^2}\\
+&=
+\sqrt{|ax_0+bx_1|^2 + |\overline{a}x_1-\overline{b}x_0|^2}
+\hspace{0.25in}(\text{because }|z_1 z_2|^2 = |z_1|^2 |z_2|^2 \text{ and } |e^{i\theta}|^2 = 1) \\
+&=
+\sqrt{(ax_0+bx_1)\overline{(ax_0+bx_1)} + (\overline{a}x_1-\overline{b}x_0)\overline{(\overline{a}x_1-\overline{b}x_0)}}\\
+&=
+\sqrt{(ax_0+bx_1)(\overline{a}\;\overline{x_0}+\overline{b}\overline{x_1}) + (\overline{a}x_1-\overline{b}x_0)(a\overline{x_1} - b\overline{x_0})}\\
+&=
+\sqrt{
+  a \overline{a} x_0\overline{x_0} +
+  a \overline{b} x_0 \overline{x_1} +
+  \overline{a} b \overline{x_0} x_1 +
+  b \overline{b} x_1 \overline{x_1} +
+  a \overline{a} x_1 \overline{x_1} -
+  \overline{a} b \overline{x_0} x_1 -
+  a \overline{b} x_0 \overline{x_1} +
+  b \overline{b} x_0 \overline{x_0}
+}\\
+&=
+\sqrt{
+  (a \overline{a} + b \overline{b}) x_0\overline{x_0} +
+  (a \overline{a} + b \overline{b}) x_1 \overline{x_1}
+}\\
+&=
+\sqrt{
+  (|a|^2 + |b|^2) |x_0|^2 +
+  (|a|^2 + |b|^2) |x_1|^2
+}\\
+&= \sqrt{|x_0|^2 + |x_1|^2}
+\hspace{0.25in}(\text{because } |a|^2 + |b|^2 = 1)
+\end{align*}
+
+Thus our unitary linear transformation \textbf{U} is indeed preserving vector magnitude.
+
+\vspace{0.25in}
+
+\textbf{III. U Preserving the Inner Product of Two Vectors}\par
+
+\vspace{0.125in}
 
 
-
-\end{enumerate}
 
 % \bibliographystyle{ACM-Reference-Format}
 \bibliographystyle{plain}
