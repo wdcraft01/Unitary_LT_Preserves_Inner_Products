@@ -233,7 +233,7 @@ So the magnitude of the transformed vector $x^{\prime}$ is:
 \hspace{0.25in}(\text{because } |a|^2 + |b|^2 = 1)
 \end{align*}
 
-Thus our unitary linear transformation \textbf{U} is indeed preserving vector magnitude.
+Thus our unitary linear transformation \textbf{U} does indeed preserve the magnitude of an arbitrary (2D) vector (with complex coordinates).
 
 \vspace{0.25in}
 
@@ -241,6 +241,74 @@ Thus our unitary linear transformation \textbf{U} is indeed preserving vector ma
 
 \vspace{0.125in}
 
+Ultimately we want to show that our unitary linear transformation \textbf{U} preserves the inner product of any two arbitrary vectors $|\phi\rangle$ and $|\psi\rangle$. That is, we want to show that:
+
+\[
+\langle U |\phi\rangle | U |\psi\rangle \rangle = \langle \phi | \psi \rangle.
+\]
+
+Let $|\phi\rangle = \beta_0 |0\rangle + \beta_1 |1\rangle$ and $|\psi\rangle = \alpha_0 |0\rangle + \alpha_1 |1\rangle$ be two arbitrary vectors in our 2D vector space with orthonormal basis $\{|0\rangle, |1\rangle\}$. Then the inner product of $\phi$ and $\psi$ is given by:
+
+\[
+\langle \phi | \psi \rangle = \sum_{i=0}^{N-1}\overline{\beta_i}\alpha_i =
+\overline{\beta_0}\alpha_0 + \overline{\beta_1}\alpha_1.
+\]
+
+We have 
+$U|\phi\rangle = \begin{pmatrix}
+   a\beta_0 + b\beta_1\\
+   e^{i\theta}(
+   \overline{a} \beta_1 - \overline{b} \beta_0)
+\end{pmatrix}$
+and
+$U|\psi\rangle = \begin{pmatrix}
+   a\alpha_0 + b\alpha_1\\
+   e^{i\theta}(
+   \overline{a} \alpha_1 - \overline{b} \alpha_0)
+\end{pmatrix}$,
+so the inner product of the transformed vectors is:
+
+\begin{align*}
+    \langle U |\phi\rangle | U |\psi\rangle \rangle
+    &= \langle \begin{pmatrix}
+   a\beta_0 + b\beta_1\\
+   e^{i\theta}(
+   \overline{a} \beta_1 - \overline{b} \beta_0)
+\end{pmatrix} | \begin{pmatrix}
+   a\alpha_0 + b\alpha_1\\
+   e^{i\theta}(
+   \overline{a} \alpha_1 - \overline{b} \alpha_0)
+\end{pmatrix} \rangle\\
+&= \overline{(a\beta_0 + b\beta_1)}(a\alpha_0 + b\alpha_1) + 
+\overline{e^{i\theta}(
+   \overline{a} \beta_1 - \overline{b} \beta_0)}(e^{i\theta}(
+   \overline{a} \alpha_1 - \overline{b} \alpha_0))\\
+&= (\overline{a}\overline{\beta_0} + \overline{b}\;\overline{\beta_1})(a\alpha_0 + b\alpha_1) + 
+e^{-i\theta}(
+   a \overline{\beta_1} - b \overline{\beta_0})(e^{i\theta}(
+   \overline{a} \alpha_1 - \overline{b} \alpha_0))\\
+&= (\overline{a}\overline{\beta_0} + \overline{b}\;\overline{\beta_1})(a\alpha_0 + b\alpha_1) + 
+(
+   a \overline{\beta_1} - b \overline{\beta_0})(
+   \overline{a} \alpha_1 - \overline{b} \alpha_0)\\
+&= (a\overline{a}\alpha_0\overline{\beta_0} + 
+\overline{a}b\alpha_1\overline{\beta_0} +
+a \overline{b}\alpha_0\overline{\beta_1} +
+b \overline{b} \alpha_1 \overline{\beta_1}) +
+(a \overline{a} \alpha_1 \overline{\beta_1} -
+a \overline{b} \alpha_0 \overline{\beta_1} -
+\overline{a} b \alpha_1 \overline{\beta_0} +
+b \overline{b} \alpha_0 \overline{\beta_0})\\
+&= (a\overline{a}+b\overline{b})\alpha_0\overline{\beta_0} +
+(a \overline{a} + b \overline{b}) \alpha_1 \overline{\beta_1}\\
+&= (|a|^2 + |b|^2)\alpha_0\overline{\beta_0} +
+(|a|^2 + |b|^2) \alpha_1 \overline{\beta_1}\\
+&= \alpha_0\overline{\beta_0} +
+   \alpha_1 \overline{\beta_1}\\
+&= \overline{\beta_0} \alpha_0 +
+   \overline{\beta_1} \alpha_1 \\
+&= \langle \phi | \psi \rangle
+\end{align*}
 
 
 % \bibliographystyle{ACM-Reference-Format}
