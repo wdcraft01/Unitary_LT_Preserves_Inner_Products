@@ -310,6 +310,29 @@ b \overline{b} \alpha_0 \overline{\beta_0})\\
 &= \langle \phi | \psi \rangle
 \end{align*}
 
+We can also show this in more general terms. Recall that for any matrices $A$ and $B$ of the appropriate sizes:
+\begin{align*}
+    (AB)^T = B^T A^T
+\end{align*}
+
+where the superscript $T$ denotes the usual transpose operation. Also recall that matrix multiplication is associative and that for a unitary matrix $U$ we have:
+\begin{align*}
+    U\;\overline{U}^T = \overline{U}^T \; U = I.
+\end{align*}
+
+Thus, for any vectors $\phi$ and $\psi$ in a complex vector space of dimension $N$ with inner product $\langle \phi | \psi \rangle = (\overline{|\phi\rangle})^T\;|\psi\rangle$, and any $N \times N$ unitary transformation matrix $U$, we have:
+
+\begin{align*}
+    \langle U\phi | U\psi \rangle
+    &= (\overline{U|\phi\rangle})^T \; (U\;|\psi\rangle)\\
+    &= (\overline{U}\;\overline{|\phi\rangle})^T \; (U\;|\psi\rangle)\\
+    &= (\overline{|\phi\rangle})^T\;(\overline{U})^T \; (U\;|\psi\rangle)\\
+    &= (\overline{|\phi\rangle})^T\;(\overline{U}^T \; U)\;|\psi\rangle\\
+    &= (\overline{|\phi\rangle})^T\;I\;|\psi\rangle\\
+    &= (\overline{|\phi\rangle})^T\;|\psi\rangle\\
+    &= \langle\phi|\psi\rangle\\
+\end{align*}
+
 
 % \bibliographystyle{ACM-Reference-Format}
 \bibliographystyle{plain}
